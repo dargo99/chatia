@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Lex Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.713.0.min.js"></script>
+</head>
+<body>
+    <div id="chatbot"></div>
+    <h1>Chatbot</h1>
+    <script>
+        // Reemplaza esto con la configuración de tu archivo lex-web-ui-loader-config.json
+        const config = {
+            "cognito": {
+                "poolId": "us-east-1:a17101db-a6eb-421d-81bf-cdefa561430e",
+                "appUserPoolClientId": "4ospbqat2o6n9118dkno65k4q3",
+                "appUserPoolName": "us-east-1_GIZpRC2lk",
+                "appDomainName": "lexkwebkuikmoodlekidentitypoolconfigkbakbuw154803361855.auth.us-east-1.amazoncognito.com",
+                "aws_cognito_region": "us-east-1",
+                "region": "us-east-1"
+            },
+            "lex": {
+                "v2BotId": "JYB8L9JTIV",
+                "v2BotAliasId": "TSTALIASID",
+                "v2BotLocaleId": "es_419",
+                "botName": "JYB8L9JTIV",
+                "botAlias": "$LATEST",
+                "initialText": "Puedes pedirme ayuda para encontrar recursos en tu curso. Simplemente escribe el recurso que quieres encontrar y sobre el tema qué trata. Si lo prefieres puedes hacer clic en el micrófono y decirmelo.",
+                "initialSpeechInstruction": "Dime el recurso que quieres encontrar y sobre el tema que trata",
+                "initialUtterance": "",
+                "reInitSessionAttributesOnRestart": false,
+                "region": "us-east-1",
+                "retryOnLexPostTextTimeout": "false",
+                "retryCountPostTextTimeout": "1"
+            },
+            "ui": {
+                "parentOrigin": "http://localhost/aws/projects/chatia",
+                "toolbarTitle": "Ayudante virtual",
+                "toolbarLogo": "",
+                "positiveFeedbackIntent": "Gracias",
+                "negativeFeedbackIntent": "No es lo que busco",
+                "helpIntent": "Ayuda",
+                "enableLogin": false,
+                "forceLogin": false,
+                "AllowSuperDangerousHTMLInMessage": true,
+                "shouldDisplayResponseCardTitle": false,
+                "saveHistory": false,
+                "minButtonContent": "Ayudante Virtual",
+                "hideInputFieldsForButtonResponse": false,
+                "pushInitialTextOnRestart": false,
+                "directFocusToBotInput": false,
+                "showDialogStateIcon": false,
+                "backButton": false,
+                "messageMenu": true,
+                "hideButtonMessageBubble": false
+            },
+            "polly": {
+                "voiceId": "Salli"
+             },
+            "recorder": {
+                "preset": "speech_recognition"
+            },
+            "iframe": {
+                "iframeOrigin": "http://chatia.aws.aca/",
+                "shouldLoadIframeMinimized": false,
+                "iframeSrcPath": "index.html#/?lexWebUiEmbed=false"
+            }
+        };
+
+        // Configura las credenciales de AWS
+        AWS.config.region = config.region;
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: config.cognito.poolId
+        });
+
+        // Inicializa el cliente de Amazon Lex
+        const lexRuntime = new AWS.LexRuntime({
+            region: config.lex.region
+        });
+
+        // Función para enviar un mensaje al chatbot de Amazon Lex
+        function sendMessageToLex(message) {
+            const params = {
+                botName: config.lex.botName,
+                botAlias: config.lex.botAlias,
+                userId: 'user-id', // Reemplaza esto con un identificador de usuario único para cada usuario
+                inputText: message
+            };
+
+            lexRuntime.postText(params, function(err, data) {
+                if (err) {
+                    console.error(err);
+                } else {
+                    console.log('Respuesta del chatbot:', data);
+                }
+            });
+        }
+
+        // Ejemplo de uso
+        sendMessageToLex('Hola, ¿cómo está todo?');
+    </script>
+</body>
+</html>
