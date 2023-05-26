@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity": "^3.338.0",
+    "@aws-sdk/client-comprehend": "^3.338.0",
+    "@aws-sdk/client-lex-runtime-service": "^3.338.0",
+    "@aws-sdk/client-translate": "^3.338.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.338.0",
+    "buffer": "^6.0.3",
+    "resolve-cwd": "^3.0.0"
+  },
+  "devDependencies": {
+    "path-browserify": "^1.0.1",
+    "webpack": "^5.84.1"
+  }
+}
