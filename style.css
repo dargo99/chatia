@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #353740;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+#chatia {
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bot-output,
+.userRequest {
+    margin: auto;
+    margin-bottom: 18px;
+    padding: 18px;
+    border-radius: 6px;
+}
+
+.userRequest {
+    background-color: #fff;
+    border: 1px solid #d9d9e3;
+}
+
+.input-chatia {
+    display: flex;
+    align-items: end;
+    color: #353740;
+    position: fixed;
+    bottom: 10px;
+    z-index: 1;
+    width: 100%;
+}
+
+.input-chatia > div {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%);
+    border-radius: 6px;
+    width: 80%;
+    border: 1px solid #d9d9e3;
+}
+
+.input-chatia > div:hover {
+    box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 20%);
+}
+
+#wisdom {
+    width: 90%;
+    border: none;
+    overflow: hidden;
+    resize: none;
+    padding: 13px;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    height: 18px;
+}
+
+#wisdom:focus {
+    outline: none;
+}
+
+#wisdom:focus + #send-button {
+    color: #0d1117;
+}
+
+#send-button,
+#record-button {
+    all: unset;
+}
+
+#send-button:hover, #record-button:hover {
+    cursor: pointer;
+}
+
+#send-button {
+    position: relative;
+    z-index: 1;
+    font-size: 20px;
+    border-radius: 50px;
+    padding: 8px;
+    color: #d9d9e3;
+    border: 1px solid #ffffff00;
+}
+
+#send-button:hover i {
+    color: #0d1117;
+}
+
+#record-button {
+    font-size: 20px;
+    border-radius: 50px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d9d9e3;
+    border: 1px solid #d9d9e3;
+    margin-left: 10px;
+}
+
+#record-button:hover {
+    color: #0d1117;
+    box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 20%);
+}
+
+#status {
+    text-align: center;
+    bottom: 113px;
+    color: #bdbdbd;
+    font-style: italic;
+    height: 70px;
+}

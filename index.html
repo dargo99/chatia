@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Lex - Sample Application (BookTrip)</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/345507f121.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="chatia">
+        <div id="conversation">
+            <p class="bot-output"><strong>ChatIA: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, quasi totam doloribus reiciendis saepe ex fugit doloremque ipsum atque numquam molestiae rem quae nam a veritatis tenetur. Facilis, aspernatur commodi?</p>
+            <p class="userRequest">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, quasi totam doloribus reiciendis saepe ex fugit doloremque ipsum atque numquam molestiae rem quae nam a veritatis tenetur. Facilis, aspernatur commodi?</p>
+            <p class="bot-output"><strong>ChatIA: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, quasi totam doloribus reiciendis saepe ex fugit doloremque ipsum atque numquam molestiae rem quae nam a veritatis tenetur. Facilis, aspernatur commodi?</p>
+        </div>
+        <div class="input-chatia">
+            <div>
+                <textarea placeholder="Envía un mensaje..." id="wisdom" rows="1"></textarea>
+                <button id="send-button" onclick="createResponse()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <button id="record-button"><i class="fas fa-microphone"></i></button>
+        </div>
+        <p id="status"></p>
+        <script type="text/javascript" src="./main.js"></script>
+        <script type="text/javascript" src="./interface.js"></script>
+    </div>
+</body>
