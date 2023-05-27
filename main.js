@@ -34465,7 +34465,7 @@ function handletext(text) {
   g_text = text;
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("load", loadNewItems, false);
-  xhr.open("POST", "../text", true); // A Spring MVC controller
+  xhr.open("POST", "./", true); // A Spring MVC controller
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //necessary
   xhr.send("text=" + text);
 }
