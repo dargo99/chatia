@@ -1,3 +1,8 @@
+let lastMessageElement = document.getElementById('status');
+let lastMessageTime = new Date();
+let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+let recorder;
+
 function formatMessageTime(date) {
     const now = new Date();
     const yesterday = new Date(now);
@@ -18,21 +23,7 @@ function formatMessageTime(date) {
     }
 }
 
-let lastMessageElement = document.getElementById('status');
-let lastMessageTime = new Date();
 lastMessageElement.innerHTML = `${formatMessageTime(lastMessageTime)}`;
-
-function getCurrentTime() {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-
-    return `${hours}:${minutes}:${seconds}`;
-}
-
-let audioContext = new (window.AudioContext || window.webkitAudioContext)();
-let recorder;
 
 function startRecording() {
     navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream) {
@@ -46,7 +37,6 @@ function startRecording() {
 
 document.getElementById('record-button').addEventListener('click', startRecording);
 
-
 const textarea = document.getElementById('wisdom');
 
 function adjustTextareaHeight() {
@@ -58,12 +48,6 @@ function adjustTextareaHeight() {
 
 textarea.addEventListener('input', adjustTextareaHeight);
 
-document.getElementById('send-button').addEventListener('click', function () {
-    stopRecording();
-    adjustTextareaHeight();
-    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
-});
-
 document.addEventListener("DOMContentLoaded", function () {
     textarea.addEventListener("keypress", function (e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
@@ -73,4 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
         }
     });
+});
+
+document.getElementById('send-button').addEventListener('click', function () {
+    adjustTextareaHeight();
+    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
 });
