@@ -16,14 +16,14 @@ body {
 }
 
 .bot-output,
-.userRequest {
+.user-output {
     margin: auto;
     margin-bottom: 18px;
     padding: 18px;
     border-radius: 6px;
 }
 
-.userRequest {
+.user-output {
     background-color: #fff;
     border: 1px solid #d9d9e3;
 }
@@ -53,7 +53,7 @@ body {
     box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 20%);
 }
 
-#wisdom {
+#user-input {
     width: 90%;
     border: none;
     overflow: hidden;
@@ -64,11 +64,11 @@ body {
     height: 18px;
 }
 
-#wisdom:focus {
+#user-input:focus {
     outline: none;
 }
 
-#wisdom:focus + #send-button {
+#user-input:focus + #send-button {
     color: #0d1117;
 }
 

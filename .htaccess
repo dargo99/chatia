@@ -1,3 +1,6 @@
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
 </IfModule>
+
+AddType application/javascript .mjs
+AddType text/javascript .js
