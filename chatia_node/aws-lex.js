@@ -1,8 +1,13 @@
-import { LexRuntimeV2Client, RecognizeTextCommand } from "./node_modules/@aws-sdk/client-lex-runtime-v2";
+import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
+import { LexRuntimeV2Client, RecognizeTextCommand } from "@aws-sdk/client-lex-runtime-v2";
 
 export class AWSLex {
     constructor() {
-        this.client = new LexRuntimeV2Client({ region: 'us-east-1' });
+        const credentials = fromCognitoIdentityPool({
+            identityPoolId: "us-east-1:a17101db-a6eb-421d-81bf-cdefa561430e", // tu identity pool id aquí
+        });
+
+        this.client = new LexRuntimeV2Client({ region: 'us-east-1', credentials, region: 'us-east-1' });
         this.botId = 'JYB8L9JTIV';
         this.botAliasId = 'TSTALIASID';
         this.localeId = 'es_419';
